@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import CarsListComponent from './CarsListComponent';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CarsListComponent />
   </React.StrictMode>,
   document.getElementById('root')
 );
