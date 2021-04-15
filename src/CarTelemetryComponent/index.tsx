@@ -12,9 +12,9 @@ import styles from './styles';
 export class CarTelemetryComponent extends Component<any, any> {
   getBorderColor = (cpu: number): string => {
     const { classes } = this.props;
-    if (cpu < 75) {
+    if (cpu <= 75) {
       return `${classes.greenBorder}`;
-    } else if( cpu > 76 && cpu < 90) {
+    } else if( cpu >= 76 && cpu <= 90) {
       return `${classes.yellowBorder}`;
     } else {
       return `${classes.redBorder}`;
@@ -23,9 +23,9 @@ export class CarTelemetryComponent extends Component<any, any> {
 
   getBackgroundColor = (percentage: number) : string => {
     const { classes } = this.props;
-    if (percentage < 75) {
+    if (percentage <= 75) {
       return `${classes.okState}`;
-    } else if( percentage > 76 && percentage < 90) {
+    } else if( percentage >= 76 && percentage <= 90) {
       return `${classes.warningState}`;
     } else {
       return `${classes.criticalState}`;
@@ -62,7 +62,7 @@ export class CarTelemetryComponent extends Component<any, any> {
           {metrics.cpu_usage}
           <MemoryIcon className={classes.statusIcon} />
         </div>
-        <div className={`${classes.telemetry} ${this.getBackgroundColor(100 - metrics.battery_level)}`}>
+        <div className={`${classes.telemetry} ${this.getBackgroundColor(metrics.battery_level)}`}>
           {metrics.battery_level}
           <BatteryStdIcon className={classes.statusIcon} />
         </div>
