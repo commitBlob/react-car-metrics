@@ -50,7 +50,9 @@ export class CarsListComponent extends Component<any, IComponentState> {
   public componentDidMount() {
     RestAPI.getCarsList().then((res) => {
       if (res.status === 200) {
-        this.setState({carsList: res.data});
+        const carsList = res.data;
+        carsList.sort((a: any, b: any) => a.name < b.name ? - 1 : Number(a.name > b.name));
+        this.setState({carsList: carsList});
       }
     }).catch((error) => {
       console.error('Failed to fetch cars list \n', error);
